@@ -1,6 +1,7 @@
-import { useEffect } from "react"
-import { reducerCases } from "./Constants"
-import { useStateProvider } from "./StateProvider"
+import { useEffect } from 'react'
+import { Config } from './Config'
+import { reducerCases } from './Constants'
+import { useStateProvider } from './StateProvider'
 
 export function GetToken() {
   const hash = window.location.hash
@@ -13,9 +14,8 @@ export function GetToken() {
   return ''
 }
 
-
-export function CheckToken(){
-	const [{ token }, dispatch] = useStateProvider()
+export function CheckToken() {
+  const [{ token }, dispatch] = useStateProvider()
 
   useEffect(() => {
     let token = GetToken()
@@ -26,5 +26,13 @@ export function CheckToken(){
     document.title = 'Welcome to Spotify'
   }, [dispatch, token])
 
-	return token;
+  return token
+}
+
+export function GotoLogin() {
+  let url = `${Config.api_uri}?client_id=${Config.client_id}&redirect_uri=${
+    Config.redirect_uri
+  }&scope=${Config.scope.join(' ')}&response_type=token&show_dialog=true`
+
+  window.location.href = url
 }
