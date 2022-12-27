@@ -10,5 +10,7 @@ export const Config={
 		"user-read-currently-playing",
 		"user-read-recently-played",
 		"user-top-read",
-	]
+	],
+	scopeString:()=>Config.scope.join(" "),
+	token:'jhsgdfkhsdhf'
 }

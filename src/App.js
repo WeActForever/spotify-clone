@@ -1,13 +1,12 @@
-import './App.css';
+import './App.css'
 import { Login } from './components/Login'
+import Spotify from './components/Spotify'
+import { CheckToken } from './utils/TokenUtils'
 
 function App() {
-  return (
-    <div>
-			<Login />
-		</div>
-		
-  );
+  let token = CheckToken()
+
+  return <div>{token ? <Spotify /> : <Login />}</div>
 }
 
-export default App;
+export default App
